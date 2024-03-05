@@ -15,16 +15,16 @@
 #define SW_STATE_PRESSED            0x01
 #define SW_STATE_RELEASED           0x00
 
-#define RETURN_OK       0x00
-#define RETURN_NOT_OK   0x01
+#define RETURN_SW_OK       0x00
+#define RETURN_SW_NOT_OK   0x01
 
 /*****************************************************************************/
 /*                              Types                                        */
 /*****************************************************************************/
 typedef struct {
-    void* port;
     uint8_t pin;
     uint8_t sw_connection;
+    void* port;
 }swCfg_t;
 
 /*****************************************************************************/

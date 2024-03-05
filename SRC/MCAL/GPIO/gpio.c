@@ -70,14 +70,6 @@ typedef struct {
 /*****************************************************************************/
 /*                           Global Variables                                */
 /*****************************************************************************/
-// gpio_t* gpio[NUM_GPIO_PORTS - 1] = {
-//     (gpio_t*)PORT_A,
-//     (gpio_t*)PORT_B,
-//     (gpio_t*)PORT_C,
-//     (gpio_t*)PORT_D,
-//     (gpio_t*)PORT_E,
-//     (gpio_t*)PORT_H
-// };
 
 /*****************************************************************************/
 /*                      Static Function Prototypes                           */
@@ -88,7 +80,7 @@ typedef struct {
 /*****************************************************************************/
 
 uint8_t gpio_initPin(gpioPin_t* pinCfg) {
-    uint8_t errorStatus = RETURN_NOT_OK;
+    uint8_t errorStatus = RETURN_GPIO_NOT_OK;
 
     uint32_t setMask, clrMask;
     
@@ -112,31 +104,41 @@ uint8_t gpio_initPin(gpioPin_t* pinCfg) {
     CAST(pinCfg->port)->OSPEEDR &= clrMask;
     CAST(pinCfg->port)->OSPEEDR |= setMask;
 
-    if(pinCfg->pin < 7) {
-        CAST(pinCfg->port)->AFRL;
+    // if(pinCfg->pin < 7) {
+    //     CAST(pinCfg->port)->AFRL;
     
-    } 
-    else {
-        CAST(pinCfg->port)->AFRH;
+    // } 
+    // else {
+    //     CAST(pinCfg->port)->AFRH;
     
-    }
+    // }
 
-    (pinCfg->af);
+    // (pinCfg->af);
+
+    errorStatus = RETURN_GPIO_OK;
 
     return errorStatus;
 }
 uint8_t gpio_setPinValue(void* port, uint8_t pin, uint8_t pin_value) {
-    uint8_t errorStatus = RETURN_NOT_OK;
+    uint8_t errorStatus = RETURN_GPIO_NOT_OK;
 
-    CAST(port)->BSRR;
-    CAST(port)->ODR;
+    if(pin_value == PIN_VALUE_HIGH) {
+        errorStatus = RETURN_GPIO_OK;
+        CAST(port)->BSRR |= (1 << pin);
+    }
+    else if(pin_value == PIN_VALUE_LOW) {
+        errorStatus = RETURN_GPIO_OK;
+        CAST(port)->BSRR |= (1 << (pin + 16));
+    }
 
     return errorStatus;
 }
 uint8_t gpio_getPinValue(void* port, uint8_t pin, uint8_t* pin_value) {
-    uint8_t errorStatus = RETURN_NOT_OK;
-
-    CAST(port)->IDR;
+    uint8_t errorStatus = RETURN_GPIO_NOT_OK;
+    if(pin_value){
+        errorStatus = RETURN_GPIO_OK;
+        *pin_value = (((CAST(port)->IDR) >> pin) & 1);
+    }    
 
     return errorStatus;
 }

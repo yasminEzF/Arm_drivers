@@ -1,9 +1,9 @@
 /*****************************************************************************/
 /*                              Includes                                     */
 /*****************************************************************************/
-#include "sw_cfg.h"
-#include "sw.h"
-#include "GPIO/gpio.h"
+#include "HAL/SW/sw_cfg.h"
+#include "HAL/SW/sw.h"
+#include "MCAL/GPIO/gpio.h"
 
 /*****************************************************************************/
 /*                              Defines                                      */
@@ -17,20 +17,25 @@
 /*                           Global Variables                                */
 /*****************************************************************************/
 const swCfg_t switches[_swsNum] = {
-    [sw_alarm] = {
-        .port = ;
-        .pin = ;
-        .sw_connection = ;
+    [sw_red] = {
+        .port = PORT_A,
+        .pin = PIN_8,
+        .sw_connection = SW_CONNECTION_PULLUP
     },
-    [sw_start] = {
-        .port = ;
-        .pin = ;
-        .sw_connection = ;
+    [sw_blue] = {
+        .port = PORT_C,
+        .pin = PIN_14,
+        .sw_connection = SW_CONNECTION_PULLDOWN
     },
-    [sw_stop] = {
-        .port = ;
-        .pin = ;
-        .sw_connection = ;
+    [sw_green] = {
+        .port = PORT_C,
+        .pin = PIN_13,
+        .sw_connection = SW_CONNECTION_PULLUP
+    },
+    [sw_yellow] = {
+        .port = PORT_C,
+        .pin = PIN_15,
+        .sw_connection = SW_CONNECTION_PULLDOWN
     }
 };
 

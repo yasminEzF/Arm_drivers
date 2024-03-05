@@ -1,7 +1,7 @@
 /*****************************************************************************/
 /*                              Includes                                     */
 /*****************************************************************************/
-#include "rcc.h"
+#include "MCAL/RCC/rcc.h"
 
 /*****************************************************************************/
 /*                              Defines                                      */
@@ -54,34 +54,34 @@ typedef struct {
     uint32_t AHB1RSTR;   //AHB1 peripheral reset 
     uint32_t AHB2RSTR;   //AHB2 peripheral reset
     uint32_t reserved;
-    uint32_t reserved;    
+    uint32_t reserved1;    
     uint32_t APB1RSTR;   //APB1 peripheral reset 
     uint32_t APB2RSTR;  //APB2 peripheral reset
-    uint32_t reserved;
-    uint32_t reserved;    
+    uint32_t reserved2;
+    uint32_t reserved3;    
     uint32_t AHB1ENR;    //AHB1 peripheral clock enable 
     uint32_t AHB2ENR;    //AHB2 peripheral clock enable
-    uint32_t reserved;
-    uint32_t reserved;
+    uint32_t reserved4;
+    uint32_t reserved5;
     uint32_t APB1ENR;    //APB1 peripheral clock enable
     uint32_t APB2ENR;    //APB2 peripheral clock enable
-    uint32_t reserved;
-    uint32_t reserved;
+    uint32_t reserved6;
+    uint32_t reserved7;
     uint32_t AHB1LPENR;  //AHB1 peripheral clock enable in low power mode
     uint32_t AHB2LPENR;  //AHB2 peripheral clock enable in low power mode
-    uint32_t reserved;
-    uint32_t reserved;
+    uint32_t reserved8;
+    uint32_t reserved9;
     uint32_t APB1LPENR;  //APB1 peripheral clock enable in low power mode
     uint32_t APB2LPENR;  //APB2 peripheral clock enable in low power mode
-    uint32_t reserved;
-    uint32_t reserved;
+    uint32_t reserved10;
+    uint32_t reserved11;
     uint32_t BDCR;      //Backup domain control 
     uint32_t CSR;        //clock control & status
-    uint32_t reserved;
-    uint32_t reserved;
+    uint32_t reserved12;
+    uint32_t reserved13;
     uint32_t SSCGR;      //spread spectrum clock generation
     uint32_t PLLI2SCFGR;     //PLLI2S configuration
-    uint32_t reserved;
+    uint32_t reserved14;
     uint32_t DCKCFGR;    //Dedicated Clocks Configuration
 }rcc_t;
 
@@ -132,7 +132,7 @@ uint8_t rcc_getClkStatus(uint8_t clock, uint8_t* clockStatus) {
 
 uint8_t rcc_enableClk(uint8_t clock) {
     uint8_t errorStatus = RETURN_NOT_OK;
-    rcc->CR |= clock;
+    rcc->CR |= (1<<16);
     if(rcc->CR & clock) {
         errorStatus = RETURN_OK;
     }

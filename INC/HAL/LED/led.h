@@ -9,23 +9,23 @@
 /*****************************************************************************/
 /*                              Defines                                      */
 /*****************************************************************************/
-#define LED_STATE_ON    0x01
-#define LED_STATE_OFF   0x00
+#define LED_STATE_ON    (uint8_t)0x01
+#define LED_STATE_OFF   (uint8_t)0x00
 
-#define LED_CONNECTION_FORWARD  0x00
-#define LED_CONNECTION_REVERSE  0x01
+#define LED_CONNECTION_FORWARD  (uint8_t)0x00
+#define LED_CONNECTION_REVERSE  (uint8_t)0x01
 
-#define RETURN_OK       0x00
-#define RETURN_NOT_OK   0x01
+#define RETURN_LED_OK       (uint8_t)0x00
+#define RETURN_LED_NOT_OK   (uint8_t)0x01
 
 /*****************************************************************************/
 /*                              Types                                        */
 /*****************************************************************************/
 typedef struct {
-    void* port;
     uint8_t pin;
     uint8_t led_connection;
     uint8_t led_state;
+    void* port;
 }ledCfg_t;
 
 /*****************************************************************************/

@@ -1,8 +1,8 @@
 /*****************************************************************************/
 /*                              Includes                                     */
 /*****************************************************************************/
-#include "sw.h"
-#include "GPIO/gpio.h"
+#include "HAL/SW/sw.h"
+#include "MCAL/GPIO/gpio.h"
 
 /*****************************************************************************/
 /*                              Defines                                      */
@@ -27,34 +27,44 @@ extern const swCfg_t switches [_swsNum];
 /*****************************************************************************/
 
 uint8_t sw_init(void) {
-    uint8_t errorStatus = RETURN_NOT_OK;
+    uint8_t errorStatus = RETURN_SW_NOT_OK;
 
     gpioPin_t sw_pin;
-    sw_pin.mode = ;
-    sw_pin.speed = ;
+    sw_pin.speed = SPEED_HIGH;
+    sw_pin.af = AF_SYSTEM;
     for(uint8_t i = 0; i < _swsNum; i++) {
-        errorStatus = RETURN_NOT_OK;
+        errorStatus = RETURN_SW_NOT_OK;
+        
+        if(switches[i].sw_connection == SW_CONNECTION_PULLUP) {
+            sw_pin.mode = MODE_IP_PU;
+        }
+        else if(switches[i].sw_connection == SW_CONNECTION_PULLDOWN) {
+            sw_pin.mode = MODE_IP_PD;
+        }        
         sw_pin.port = switches[i].port;
         sw_pin.pin = switches[i].pin;
         if(gpio_initPin(&sw_pin)) {
             break;
         }
         else {
-            errorStatus = RETURN_OK;
+            errorStatus = RETURN_SW_OK;
         }
     }
     return errorStatus;
 }
 
-uint8_t sw_setState(uint8_t sw, uint8_t* sw_state) {
-    uint8_t errorStatus = RETURN_NOT_OK;
-    uint8_t switch_state;
+uint8_t sw_getState(uint8_t sw, uint8_t* sw_state) {
+    uint8_t errorStatus = RETURN_SW_NOT_OK;
+    
+    if(sw_state) {
+        uint8_t switch_state = 2;
 
-    if(!gpio_getPinValue(switches[sw].port,switches[sw].pin,&switch_state)) {
-        errorStatus = RETURN_OK;
+        if(!gpio_getPinValue(switches[sw].port,switches[sw].pin,&switch_state)) {
+            errorStatus = RETURN_SW_OK;
+        }
+        *(sw_state) = switch_state ^ switches[sw].sw_connection;
     }
-    switch_state ^= switches[sw].sw_connection;
-
+    
     return errorStatus;
 }
 

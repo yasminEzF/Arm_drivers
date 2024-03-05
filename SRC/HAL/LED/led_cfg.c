@@ -1,9 +1,9 @@
 /*****************************************************************************/
 /*                              Includes                                     */
 /*****************************************************************************/
-#include "led_cfg.h"
-#include "led.h"
-#include "GPIO/gpio.h"
+#include "HAL/LED/led_cfg.h"
+#include "HAL/LED/led.h"
+#include "MCAL/GPIO/gpio.h"
 
 /*****************************************************************************/
 /*                              Defines                                      */
@@ -18,23 +18,29 @@
 /*                           Global Variables                                */
 /*****************************************************************************/
 const ledCfg_t leds[_ledsNum] = {
-    [led_alarm] = {
-        .port = ;
-        .pin = ;
-        .led_connection = ;
-        .led_state = ;
+    [led_red] = {
+        .port = PORT_A,
+        .pin = PIN_4,
+        .led_connection = LED_CONNECTION_FORWARD,
+        .led_state = LED_STATE_OFF
     },
-    [led_start] = {
-        .port = ;
-        .pin = ;
-        .led_connection = ;
-        .led_state = ;
+    [led_blue] = {
+        .port = PORT_B,
+        .pin = PIN_9,
+        .led_connection = LED_CONNECTION_REVERSE,
+        .led_state = LED_STATE_OFF
     },
-    [led_stop] = {
-        .port = ;
-        .pin = ;
-        .led_connection = ;
-        .led_state = ;
+    [led_green] = {
+        .port = PORT_A,
+        .pin = PIN_2,
+        .led_connection = LED_CONNECTION_FORWARD,
+        .led_state = LED_STATE_ON
+    },
+    [led_yellow] = {
+        .port = PORT_B,
+        .pin = PIN_8,
+        .led_connection = LED_CONNECTION_REVERSE,
+        .led_state = LED_STATE_ON
     }
 };
 

@@ -16,9 +16,10 @@
 /*                              Types                                        */
 /*****************************************************************************/
 typedef enum {
-    sw_alarm,
-    sw_start,
-    sw_stop,
+    sw_red,
+    sw_yellow,
+    sw_blue,
+    sw_green,
     _swsNum
 }sws_t;
 

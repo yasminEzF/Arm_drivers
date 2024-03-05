@@ -15,9 +15,10 @@
 /*                              Types                                        */
 /*****************************************************************************/
 typedef enum {
-    led_alarm,
-    led_start,
-    led_stop,
+    led_red,
+    led_yellow,
+    led_green,
+    led_blue,
     _ledsNum
 }leds_t;
 

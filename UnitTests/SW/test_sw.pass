@@ -1,0 +1,50 @@
+---
+:source:
+  :path: test
+  :file: test_sw.c
+:successes:
+- :test: test_sw_init_gpio_init_fail
+  :line: 24
+  :message: ''
+  :unity_test_time: 0
+- :test: test_sw_init_pullup
+  :line: 31
+  :message: ''
+  :unity_test_time: 0
+- :test: test_sw_init_pulldown
+  :line: 47
+  :message: ''
+  :unity_test_time: 0
+- :test: test_sw_getState_gpio_fail
+  :line: 62
+  :message: ''
+  :unity_test_time: 0
+- :test: test_sw_getState_NullPtr
+  :line: 70
+  :message: ''
+  :unity_test_time: 0
+- :test: test_sw_getState_PU_press
+  :line: 77
+  :message: ''
+  :unity_test_time: 0
+- :test: test_sw_getState_PD_press
+  :line: 89
+  :message: ''
+  :unity_test_time: 0
+- :test: test_sw_getState_PU_rel
+  :line: 102
+  :message: ''
+  :unity_test_time: 0
+- :test: test_sw_getState_PD_rel
+  :line: 114
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 9
+  :passed: 9
+  :failed: 0
+  :ignored: 0
+:stdout: []
+:time: 0.055520500001875916

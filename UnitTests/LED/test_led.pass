@@ -1,0 +1,58 @@
+---
+:source:
+  :path: test
+  :file: test_led.c
+:successes:
+- :test: test_led_init_gpio_init_fail
+  :line: 24
+  :message: ''
+  :unity_test_time: 0
+- :test: test_led_init_gpio_setPin_fail
+  :line: 32
+  :message: ''
+  :unity_test_time: 0
+- :test: test_led_init_forward_on
+  :line: 40
+  :message: ''
+  :unity_test_time: 0
+- :test: test_led_init_forward_off
+  :line: 58
+  :message: ''
+  :unity_test_time: 0
+- :test: test_led_init_reverse_on
+  :line: 75
+  :message: ''
+  :unity_test_time: 0
+- :test: test_led_init_reverse_off
+  :line: 92
+  :message: ''
+  :unity_test_time: 0
+- :test: test_led_setState_forward_on
+  :line: 109
+  :message: ''
+  :unity_test_time: 0
+- :test: test_led_setState_forward_off
+  :line: 118
+  :message: ''
+  :unity_test_time: 0
+- :test: test_led_setState_reverse_on
+  :line: 127
+  :message: ''
+  :unity_test_time: 0
+- :test: test_led_setState_reverse_off
+  :line: 135
+  :message: ''
+  :unity_test_time: 0
+- :test: test_led_setState_gpio_setPin_fail
+  :line: 144
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 11
+  :passed: 11
+  :failed: 0
+  :ignored: 0
+:stdout: []
+:time: 0.032102500001201406

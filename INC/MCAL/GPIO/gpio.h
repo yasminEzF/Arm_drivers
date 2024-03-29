@@ -37,8 +37,8 @@
 #define PIN_VALUE_HIGH      (uint8_t)0x01
 #define PIN_VALUE_LOW       (uint8_t)0x00
 
-#define RETURN_OK           (uint8_t)0
-#define RETURN_NOT_OK       (uint8_t)1
+#define RETURN_GPIO_OK           (uint8_t)0
+#define RETURN_GPIO_NOT_OK       (uint8_t)1
 
 //PUPD2_OTYPE1_MODE2
 #define MODE_OUTPUT_PP      (uint8_t)(MODE_OUTPUT|OTYPE_PP|PUPD_NONE)
